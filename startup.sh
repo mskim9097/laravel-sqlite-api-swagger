@@ -9,6 +9,12 @@ touch /home/site/wwwroot/database/database.sqlite
 chmod 666 /home/site/wwwroot/database/database.sqlite
 fi
 
+# Ensure storage directories exist
+mkdir -p /home/site/wwwroot/storage/framework/views
+mkdir -p /home/site/wwwroot/storage/framework/cache
+mkdir -p /home/site/wwwroot/storage/framework/sessions
+mkdir -p /home/site/wwwroot/storage/logs
+
 # Set correct permissions
 chmod -R 775 /home/site/wwwroot/storage
 chmod -R 775 /home/site/wwwroot/bootstrap/cache
@@ -25,6 +31,7 @@ php /home/site/wwwroot/artisan config:clear
 php /home/site/wwwroot/artisan config:cache
 php /home/site/wwwroot/artisan route:clear
 php /home/site/wwwroot/artisan view:clear
+php /home/site/wwwroot/artisan view:cache
 
 # Copy default Nginx configuration
 cp /home/site/wwwroot/default /etc/nginx/sites-available/default
